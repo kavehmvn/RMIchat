@@ -1,0 +1,10 @@
+
+In order to implement Single/Multiple PID mode in one project, the strategy pattern has been used. A context class(communicator) is set with a proper launch strategy according to the input (sh files) either with multiple PID or single PID mode strategy (two different concrete strategies are implemented via a unified interface for this goal). The context class will then run the strategy inside its own method to launch the application with a desired behavior.
+
+The application in both launch mode uses the mediator pattern for client/server communication and interaction. the pattern has been chosen to aim for a loose coupling solution in order not to bind the clients and server together. so in this pattern every client(ChatClient class) know its mediator(the ChatServer class) and will send its message to its mediator and receive its message from the same mediator. the mediator(ChatServer class) is responsible to broadcast the received messages to other chat-clients as it has a collection of chat-clients(colleague class in mediator pattern).
+
+Every client is running on a different thread and is scanning the input and read the typed message to send it to other clients via the chat server. Using this pattern no clients are explicitly bound, and they can only interact via the chat server.
+
+A stop condition and a name is used in client initialization so that every client has its own username and the stop condition to check for stop sending and receiving messages.
+
+
